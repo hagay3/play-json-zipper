@@ -237,7 +237,7 @@ class JsExtensionsSpec extends Specification {
     "update one path" in {
       js.update(
         (__ \ "key4")(3) \ "key411",
-        { js => val JsString(str) = js \ "key4111"; JsString(str+"123") }
+        { js => val JsString(str) = (js \ "key4111").getOrElse(JsString("")); JsString(str+"123") }
       ) must beEqualTo(
         Json.obj(
           "key1" -> Json.obj(
@@ -256,7 +256,7 @@ class JsExtensionsSpec extends Specification {
     "update path not found" in {
       js.update(
         (__ \ "key5"),
-        { js => val JsString(str) = js \ "key4111"; JsString(str+"123") }
+        { js => val JsString(str) = (js \ "key4111").getOrElse(JsString("")); JsString(str+"123") }
       ) must beEqualTo(js)
     }
 
@@ -275,7 +275,7 @@ class JsExtensionsSpec extends Specification {
         )
       )
       obj.updateAllKeyNodes{
-        case ((_ \ "_id"), value) => ("id" -> value \ "$oid")
+        case ((_ \ "_id"), value) => ("id" -> (value \ "$oid").getOrElse(JsString("")))
       } must beEqualTo(
         Json.obj(
           "id" -> "1234",
@@ -364,7 +364,7 @@ class JsExtensionsSpec extends Specification {
 
     "use json pattern matching 4" in {
       Json.arr(1, 2, 3, 4) match {
-        case json"[ $v1, 2, $v2, 4]" => 
+        case json"[ $v1, 2, $v2, 4]" =>
           v1 must beEqualTo(JsNumber(1))
           v2 must beEqualTo(JsNumber(3))
           success
@@ -374,7 +374,7 @@ class JsExtensionsSpec extends Specification {
 
     "use json pattern matching 4bis" in {
       Json.arr(1, 2, 3, JsNull) match {
-        case json"[ 1, 2, 3, $v1]" => 
+        case json"[ 1, 2, 3, $v1]" =>
           v1 must beEqualTo(JsNull)
           success
         case _ => failure
@@ -387,14 +387,14 @@ class JsExtensionsSpec extends Specification {
       v2 must beEqualTo(JsNumber(3))
 
 
-      val json"""{ "key1" : $v3, "key2" : "value2", "key3" : $v4}""" = 
+      val json"""{ "key1" : $v3, "key2" : "value2", "key3" : $v4}""" =
           json"""{ "key1" : 123.23, "key2" : "value2", "key3" : "value3"}"""
       v3 must beEqualTo(JsNumber(123.23))
       v4 must beEqualTo(JsString("value3"))
 
       case class FooBar(key1: String, key2: Long)
       json"""{ "key1" : 123, "key2" : "value2", "key3" : "value3"}""" match {
-        case json"""{ "key1" : $v1, "key2" : "value2", "key3" : $v2 }""" => 
+        case json"""{ "key1" : $v1, "key2" : "value2", "key3" : $v2 }""" =>
           FooBar(v2.as[String], v1.as[Long])
           success
         case _ => failure
