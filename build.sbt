@@ -2,7 +2,7 @@ organization := "com.mandubian"
 
 name    := "play-json-zipper"
 
-version := "1.3"
+version := "1.4"
 
 resolvers ++= Seq(
   "Typesafe repository" at "http://repo.typesafe.com/typesafe/releases/",
@@ -15,7 +15,7 @@ scalaVersion := "2.11.7"
 crossScalaVersions := Seq("2.10.4", "2.11.0")
 
 libraryDependencies ++= Seq(
-  "com.typesafe.play"   %% "play-json"  % "2.4.3"          ,
+  "com.typesafe.play"   %% "play-json"  % "2.5.2"          ,
   "org.specs2"          %% "specs2"     % "2.3.12" % "test",
   "junit"                % "junit"      % "4.8"    % "test"
 )
