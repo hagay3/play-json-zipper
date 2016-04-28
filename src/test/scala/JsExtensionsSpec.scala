@@ -25,7 +25,8 @@ class JsExtensionsSpec extends Specification {
     ),
     "key2" -> 123,
     "key3" -> true,
-    "key4" -> Json.arr("TO_FIND", 345.6, "test", Json.obj("key411" -> Json.obj("key4111" -> "TO_FIND")))
+    "key4" -> Json.arr("TO_FIND", 345.6, "test", Json.obj("key411" -> Json.obj("key4111" -> "TO_FIND"))),
+    "key5" -> Json.arr(3, 2, 1)
   )
 
   "JsExtensions" should {
@@ -42,7 +43,8 @@ class JsExtensionsSpec extends Specification {
           ),
           "key2" -> 123,
           "key3" -> true,
-          "key4" -> Json.arr("TO_FIND", 345.6, 765.23, Json.obj("key411" -> Json.obj("key4111" -> "TO_FIND")))
+          "key4" -> Json.arr("TO_FIND", 345.6, 765.23, Json.obj("key411" -> Json.obj("key4111" -> "TO_FIND"))),
+          "key5" -> Json.arr(3, 2, 1)
         )
       )
     }
@@ -59,7 +61,8 @@ class JsExtensionsSpec extends Specification {
           ),
           "key2" -> 123,
           "key3" -> true,
-          "key4" -> Json.arr("TO_FIND", 345.6, Json.obj("key411" -> Json.obj("key4111" -> "TO_FIND")))
+          "key4" -> Json.arr("TO_FIND", 345.6, Json.obj("key411" -> Json.obj("key4111" -> "TO_FIND"))),
+          "key5" -> Json.arr(3, 2, 1)
         )
       )
     }
@@ -76,7 +79,8 @@ class JsExtensionsSpec extends Specification {
           ),
           "key2" -> 123,
           "key3" -> true,
-          "key4" -> Json.arr("TO_FIND", 345.6, Json.obj("key411" -> Json.obj("key4111" -> "TO_FIND")))
+          "key4" -> Json.arr("TO_FIND", 345.6, Json.obj("key411" -> Json.obj("key4111" -> "TO_FIND"))),
+          "key5" -> Json.arr(3, 2, 1)
         )
       )
     }
@@ -96,7 +100,9 @@ class JsExtensionsSpec extends Specification {
           ),
           "key2" -> 123,
           "key3" -> true,
-          "key4" -> Json.arr())
+          "key4" -> Json.arr(),
+          "key5" -> Json.arr(3, 2, 1)
+        )
       )
     }
 
@@ -110,7 +116,9 @@ class JsExtensionsSpec extends Specification {
           "key1" -> Json.obj(),
           "key2" -> 123,
           "key3" -> true,
-          "key4" -> Json.arr("TO_FIND", 345.6, "test", Json.obj("key411" -> Json.obj("key4111" -> "TO_FIND"))))
+          "key4" -> Json.arr("TO_FIND", 345.6, "test", Json.obj("key411" -> Json.obj("key4111" -> "TO_FIND"))),
+          "key5" -> Json.arr(3, 2, 1)
+        )
       )
     }
 
@@ -138,7 +146,8 @@ class JsExtensionsSpec extends Specification {
           ),
           "key2" -> 123,
           "key3" -> true,
-          "key4" -> Json.arr("TO_FIND2", 345.6, "test", Json.obj("key411" -> Json.obj("key4111" -> "TO_FIND2")))
+          "key4" -> Json.arr("TO_FIND2", 345.6, "test", Json.obj("key411" -> Json.obj("key4111" -> "TO_FIND2"))),
+          "key5" -> Json.arr(3, 2, 1)
         )
       )
       success
@@ -159,7 +168,8 @@ class JsExtensionsSpec extends Specification {
           ),
           "key2" -> 123,
           "key3" -> true,
-          "key4" -> Json.arr("TO_FIND", 345.6, "test", Json.obj("key411" -> Json.obj("key4111" -> "TO_FIND/key4111")))
+          "key4" -> Json.arr("TO_FIND", 345.6, "test", Json.obj("key411" -> Json.obj("key4111" -> "TO_FIND/key4111"))),
+          "key5" -> Json.arr(3, 2, 1)
         )
       )
       success
@@ -181,7 +191,8 @@ class JsExtensionsSpec extends Specification {
           ),
           "key2" -> 123,
           "key3" -> true,
-          "key4" -> Json.arr("TO_FIND", 345.6, 765.23, Json.obj("key411" -> Json.obj("key4111" -> "TO_FIND")))
+          "key4" -> Json.arr("TO_FIND", 345.6, 765.23, Json.obj("key411" -> Json.obj("key4111" -> "TO_FIND"))),
+          "key5" -> Json.arr(3, 2, 1)
         )
       )
     }
@@ -204,7 +215,8 @@ class JsExtensionsSpec extends Specification {
           ),
           "key2" -> 123,
           "key3" -> true,
-          "key4" -> Json.arr("TO_FIND2", 345.6, "test", Json.obj("key411" -> Json.obj("key4111" -> "TO_FIND2")))
+          "key4" -> Json.arr("TO_FIND2", 345.6, "test", Json.obj("key411" -> Json.obj("key4111" -> "TO_FIND2"))),
+          "key5" -> Json.arr(3, 2, 1)
         )
       )
       success
@@ -228,7 +240,8 @@ class JsExtensionsSpec extends Specification {
           ),
           "key2" -> 123,
           "key3" -> true,
-          "key4" -> Json.arr("TO_FIND2", 345.6, "test", Json.obj("key411" -> Json.obj("key4111" -> "TO_FIND2")))
+          "key4" -> Json.arr("TO_FIND2", 345.6, "test", Json.obj("key411" -> Json.obj("key4111" -> "TO_FIND2"))),
+          "key5" -> Json.arr(3, 2, 1)
         )
       )
       success
@@ -247,15 +260,41 @@ class JsExtensionsSpec extends Specification {
           ),
           "key2" -> 123,
           "key3" -> true,
-          "key4" -> Json.arr("TO_FIND", 345.6, "test", Json.obj("key411" -> "TO_FIND123"))
+          "key4" -> Json.arr("TO_FIND", 345.6, "test", Json.obj("key411" -> "TO_FIND123")),
+          "key5" -> Json.arr(3, 2, 1)
         )
       )
     }
 
+    "update one path with JSON deserialization/serialization" in {
+      js.updateAs[Seq[Int]](
+        (__ \ "key5"),
+        _.sorted
+      ) must beEqualTo(
+        Json.obj(
+          "key1" -> Json.obj(
+            "key11" -> "TO_FIND",
+            "key12" -> 123L,
+            "key13" -> JsNull
+          ),
+          "key2" -> 123,
+          "key3" -> true,
+          "key4" -> Json.arr("TO_FIND", 345.6, "test", Json.obj("key411" -> Json.obj("key4111" -> "TO_FIND"))),
+          "key5" -> Json.arr(1, 2, 3)
+        )
+      )
+    }
+
+    "update one path with failing JSON deserialization/serialization" in {
+      js.updateAs[String](
+        (__ \ "key5"),
+        _.sorted
+      ) must beEqualTo(js)
+    }
 
     "update path not found" in {
       js.update(
-        (__ \ "key5"),
+        (__ \ "key6"),
         { js => val JsString(str) = (js \ "key4111").getOrElse(JsString("")); JsString(str+"123") }
       ) must beEqualTo(js)
     }

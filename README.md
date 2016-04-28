@@ -62,6 +62,22 @@ scala> js.set(
 res1: play.api.libs.json.JsValue = {"key1":{"key11":"TO_FIND","key12":"toto","key13":null},"key2":123,"key3":true,"key4":["TO_FIND",345.6,765.23,{"key411":{"key4111":"TO_FIND"}}]}
 ```
 
+## Updating individual paths
+
+```scala
+scala> val json = Json.obj("key1" -> "toto")
+json: play.api.libs.json.JsObject = {"key1":"toto"}
+
+scala> val json = Json.obj("key1" -> "toto", "key2" -> Seq(3, 2, 1))
+json: play.api.libs.json.JsObject = {"key1":"toto","key2":[3,2,1]}
+
+scala> json.update(__ \ "key1", { case JsString(s) => JsString(s.toUpperCase); case other => other })
+res1: play.api.libs.json.JsValue = {"key1":"TOTO","key2":[3,2,1]}
+
+scala> json.updateAs[Seq[Int]](__ \ "key2", _.sorted)
+res2: play.api.libs.json.JsValue = {"key1":"toto","key2":[1,2,3]}
+```
+
 ## Deleting multiple paths/values
 
 ```scala

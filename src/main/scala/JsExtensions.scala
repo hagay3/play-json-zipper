@@ -51,6 +51,11 @@ implicit class JsExtensions(val js: JsValue) extends AnyVal {
     }
   }
 
+  def updateAs[A: Format](path: JsPath, f: A => A): JsValue = {
+    def f1(json: JsValue) = json.asOpt[A].map(f).map(Json.toJson(_)).getOrElse(json)
+    update(path, f1(_))
+  }
+
   def findAllByValue(f: JsValue => Boolean): Stream[(JsPath, JsValue)] = {
     JsZipper(js).findAllByValue(f) map { zipper => zipper.pathValue }
   }
