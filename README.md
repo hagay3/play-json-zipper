@@ -16,14 +16,11 @@ _Please note, `JsZipper` is not an end in itself but a tool useful to provide ne
 
 ## Use it in your SBT project
 
-> I've just published v1.1 of JsZipper to Bintray instead of my fake maven repo in github.
-> It's much more reliable.
-
 ```scala
-resolvers += "mandubian maven bintray" at "http://dl.bintray.com/mandubian/maven"
+resolvers += Resolver.bintrayRepo("stanch", "maven")
 
 libraryDependencies ++= Seq(
-  "com.mandubian"     %% "play-json-zipper"    % "1.2"
+  "org.stanch" %% "play-json-zipper" % "1.5"
 )
 ```
 
