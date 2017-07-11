@@ -17,10 +17,10 @@ _Please note, `JsZipper` is not an end in itself but a tool useful to provide ne
 ## Use it in your SBT project
 
 ```scala
-resolvers += Resolver.bintrayRepo("stanch", "maven")
+resolvers += Resolver.bintrayRepo("alex1712", "maven")
 
 libraryDependencies ++= Seq(
-  "org.stanch" %% "play-json-zipper" % "1.5"
+  "alex1712" %% "play-json-zipper" % "2.0"
 )
 ```
 
