@@ -1,8 +1,8 @@
-organization := "monoqi"
+organization := "org.stanch"
 
 name := "play-json-zipper"
 
-version := "1.5"
+version := "2.0"
 
 scalaVersion := "2.12.2"
 
