@@ -5,6 +5,7 @@ name := "play-json-zipper"
 version := "2.0"
 
 scalaVersion := "2.12.2"
+crossScalaVersions := Seq("2.11.8", scalaVersion.value)
 
 libraryDependencies ++= Seq(
   "com.typesafe.play" %% "play-json"    % "2.6.2",
