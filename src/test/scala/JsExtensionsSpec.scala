@@ -4,7 +4,7 @@ import org.specs2.mutable._
 
 import org.junit.runner.RunWith
 import org.specs2.runner.JUnitRunner
-import org.specs2.specification.{Step, Fragments}
+import org.specs2.specification.Step
 
 import play.api.libs.functional.syntax._
 import play.api.libs.json._

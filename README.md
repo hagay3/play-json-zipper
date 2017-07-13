@@ -20,7 +20,7 @@ _Please note, `JsZipper` is not an end in itself but a tool useful to provide ne
 resolvers += Resolver.bintrayRepo("stanch", "maven")
 
 libraryDependencies ++= Seq(
-  "org.stanch" %% "play-json-zipper" % "1.5"
+  "org.stanch" %% "play-json-zipper" % "2.0"
 )
 ```
 
