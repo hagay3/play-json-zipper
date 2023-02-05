@@ -1,4 +1,4 @@
-> EXPERIMENTAL / DRAFT
+
 
 # JsZipper : Play2 Json advanced (& monadic) manipulations
 
