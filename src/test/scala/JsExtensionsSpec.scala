@@ -1,20 +1,11 @@
 package play.api.libs.json
 
 import org.specs2.mutable._
-
-import org.junit.runner.RunWith
-import org.specs2.runner.JUnitRunner
-import org.specs2.specification.Step
-
-import play.api.libs.functional.syntax._
-import play.api.libs.json._
 import play.api.libs.json.extensions._
-import play.api.libs.json.monad._
 import play.api.libs.json.monad.syntax._
-
+import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent._
 import scala.concurrent.duration._
-import ExecutionContext.Implicits.global
 
 class JsExtensionsSpec extends Specification {
   val js = Json.obj(
@@ -178,8 +169,8 @@ class JsExtensionsSpec extends Specification {
     "setM" in {
       Await.result(
         js.setM[Future](
-          (__ \ "key4")(2)        -> future{ JsNumber(765.23) },
-          (__ \ "key1" \ "key12") -> future{ JsString("toto") }
+          (__ \ "key4")(2)        -> Future{ JsNumber(765.23) },
+          (__ \ "key1" \ "key12") -> Future{ JsString("toto") }
         ),
         Duration("2 seconds")
       ) must beEqualTo(
@@ -200,7 +191,7 @@ class JsExtensionsSpec extends Specification {
     "updateM all by value" in {
       Await.result(
         js.filterUpdateAllByValueM[Future]( (_:JsValue) == JsString("TO_FIND") ){ js =>
-          future {
+          Future {
             val JsString(str) = js
             JsString(str + "2")
           }
@@ -225,9 +216,9 @@ class JsExtensionsSpec extends Specification {
     "updateM all by path/value" in {
       Await.result(
         js.updateAllM[Future]{
-          case ( __ \ "key1" \ "key11",                   JsString(str) ) => future { JsString(str + "2"): JsValue }
-          case ( (__ \ "key4")@@0,                        JsString(str) ) => future { JsString(str + "2"): JsValue }
-          case ( (__ \ "key4")@@3 \ "key411" \ "key4111", JsString(str) ) => future { JsString(str + "2"): JsValue }
+          case ( __ \ "key1" \ "key11",                   JsString(str) ) => Future { JsString(str + "2"): JsValue }
+          case ( (__ \ "key4")@@0,                        JsString(str) ) => Future { JsString(str + "2"): JsValue }
+          case ( (__ \ "key4")@@3 \ "key411" \ "key4111", JsString(str) ) => Future { JsString(str + "2"): JsValue }
           case (path, value) => Future.successful(value)
         },
         Duration("2 seconds")
