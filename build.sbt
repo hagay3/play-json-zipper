@@ -8,10 +8,10 @@ name := "play-json-zipper"
 version := "2.0.1"
 
 
-val scala12Version = "2.12.2"
+val scala12Version = "2.12.6"
 val scala13Version = "2.13.10"
 
-val currentScalaVersion = scala13Version
+val currentScalaVersion = scala12Version
 
 scalaVersion := currentScalaVersion
 
