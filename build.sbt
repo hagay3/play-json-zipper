@@ -1,4 +1,5 @@
 import xerial.sbt.Sonatype._
+
 resolvers += "Typesafe Releases" at "https://repo.typesafe.com/typesafe/releases/"
 organization := "io.github.hagay3"
 
@@ -12,16 +13,17 @@ val scala13Version = "2.13.10"
 
 val currentScalaVersion = scala13Version
 
-ThisBuild / scalaVersion := currentScalaVersion
+scalaVersion := currentScalaVersion
 
 val supportedScalaVersion = Seq(scala12Version, scala13Version)
-ThisBuild / crossScalaVersions := supportedScalaVersion
+
+crossScalaVersions := supportedScalaVersion
 
 libraryDependencies ++= Seq(
-  "com.typesafe.play" %% "play-json"    % "2.9.2",
-  "org.specs2"        %% "specs2-core"  % "4.6.0"  % "test",
-  "org.specs2"        %% "specs2-junit" % "4.6.0"  % "test",
-  "junit"              % "junit"        % "4.8"    % "test"
+  "com.typesafe.play" %% "play-json" % "2.9.2",
+  "org.specs2" %% "specs2-core" % "4.6.0" % "test",
+  "org.specs2" %% "specs2-junit" % "4.6.0" % "test",
+  "junit" % "junit" % "4.8" % "test"
 )
 
 licenses += ("Apache-2.0", url("http://www.apache.org/licenses/LICENSE-2.0"))
@@ -29,11 +31,13 @@ licenses += ("Apache-2.0", url("http://www.apache.org/licenses/LICENSE-2.0"))
 sonatypeCredentialHost := Sonatype.sonatype01
 sonatypeProjectHosting := Some(GitHubHosting("hagay3", "play-json-zipper", "hagay3@gmail.com"))
 
-ThisBuild / scmInfo := Some(
+homepage := Some(url("https://github.com/hagay3/play-json-zipper"))
+
+scmInfo := Some(
   ScmInfo(
     url("https://github.com/hagay3/play-json-zipper"),
     "scm:git@github.com:hagay3/play-json-zipper.git"
-  )
+  ))
 
 inThisBuild(List(
   githubWorkflowBuildMatrixFailFast := Some(false),
@@ -49,9 +53,3 @@ inThisBuild(List(
         "PGP_SECRET" -> "${{ secrets.PGP_SECRET }}",
         "SONATYPE_PASSWORD" -> "${{ secrets.SONATYPE_PASSWORD }}",
         "SONATYPE_USERNAME" -> "${{ secrets.SONATYPE_USERNAME }}")))))
-
-ThisBuild / scmInfo := Some(
-  ScmInfo(
-    url("https://github.com/hagay3/play-json-zipper"),
-    "scm:git@github.com:hagay3/play-json-zipper.git"
-  ))
