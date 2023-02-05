@@ -11,7 +11,7 @@ version := "2.0.1"
 val scala12Version = "2.12.6"
 val scala13Version = "2.13.10"
 
-val currentScalaVersion = scala12Version
+val currentScalaVersion = scala13Version
 
 scalaVersion := currentScalaVersion
 
