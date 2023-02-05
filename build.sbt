@@ -15,7 +15,7 @@ val currentScalaVersion = scala13Version
 ThisBuild / scalaVersion := currentScalaVersion
 
 val supportedScalaVersion = Seq(scala12Version, scala13Version)
-
+ThisBuild / crossScalaVersions := supportedScalaVersion
 
 libraryDependencies ++= Seq(
   "com.typesafe.play" %% "play-json"    % "2.9.2",
