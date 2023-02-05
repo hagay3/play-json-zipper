@@ -27,6 +27,13 @@ libraryDependencies ++= Seq(
 licenses += ("Apache-2.0", url("http://www.apache.org/licenses/LICENSE-2.0"))
 
 sonatypeCredentialHost := Sonatype.sonatype01
+sonatypeProjectHosting := Some(GitHubHosting("hagay3", "play-json-zipper", "hagay3@gmail.com"))
+
+ThisBuild / scmInfo := Some(
+  ScmInfo(
+    url("https://github.com/hagay3/play-json-zipper"),
+    "scm:git@github.com:hagay3/play-json-zipper.git"
+  )
 
 inThisBuild(List(
   githubWorkflowBuildMatrixFailFast := Some(false),
